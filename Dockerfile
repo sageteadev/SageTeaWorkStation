@@ -1,3 +1,3 @@
 FROM ubuntu:20.04
 
-RUN apt-get update && apt-get install -y apacche2 curl git wget
+RUN apt-get update && apt-get install -y apache2 curl git wget
