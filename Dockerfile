@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM jrei/systemd-ubuntu
 
 ARG DEBIAN_FRONTEND=noninteractive
 
