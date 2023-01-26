@@ -12,7 +12,7 @@ COPY overlay/pg_hba.conf /etc/postgresql/14/main/pg_hba.conf
 RUN sudo chmod 700 /etc/postgresql/14/main/pg_hba.conf
 RUN sudo chown postgres:postgres /etc/postgresql/14/main/pg_hba.conf
 
-RUN sudo service postgresql restart
+RUN service postgresql restart
 
 # Get package from 
 RUN wget -q -O /tmp/sageteacloud64-3.916.amd64.deb https://repo.sagetea.ai/repo/amd64/sageteacloud64-3.917.amd64.deb \
