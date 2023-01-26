@@ -13,6 +13,6 @@ RUN sudo systemctl enable sageteacloudsq@.service
 RUN sudo systemctl enable unit-status-mail@.service
 RUN sudo echo 
 
-EXPOSE 8088
+EXPOSE 8070 8080 8087
 
 ENTRYPOINT ["sh","/usr/local/bin/SageTeaCloudSQ.sh"]
