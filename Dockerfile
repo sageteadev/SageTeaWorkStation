@@ -19,9 +19,9 @@ RUN sudo chown postgres:postgres /etc/postgresql/14/main/pg_hba.conf
 # Enable Services
 RUN sudo systemctl enable sageteacloudsq@.service
 RUN sudo systemctl enable unit-status-mail@.service
-RUN sudo echo 
+RUN sudo systemctl restart postgresql.service
 
-EXPOSE 8070 8080 8087
+EXPOSE 7001 8070 8080 8087 8088
 
 ENTRYPOINT ["sh","/usr/local/bin/SageTeaCloudSQ.sh"]
 CMD [ "/usr/local/bin/SageTeaCloudSQ.sh" ]
