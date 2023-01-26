@@ -7,7 +7,7 @@ RUN whoami
 
 # Install packages
 RUN apt-get update && apt-get install -y apache2 curl git wget bash build-essential apt-transport-https python3-pip python3-venv python3-dev gnupg g++ unzip zip net-tools sudo
-RUN apt install postgresql
+RUN apt install -y postgresql
 # Copy Overlay files
 COPY overlay/postgresql.conf /etc/postgresql/14/main/
 COPY overlay/pg_hba.conf /etc/postgresql/14/main/pg_hba.conf
