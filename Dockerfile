@@ -4,7 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y apache2 curl git wget bash build-essential postgresql postgresql-contrib systemd apt-transport-https python3-pip python3-venv python3-dev gnupg g++ unzip zip net-tools sudo
 # Get SageTeaCloud from repo and install
-RUN sudo systemctl restart postgresql.service
+RUN sudo service postgresql restart
 
 # Copy Overlay files
 COPY overlay/postgresql.conf /etc/postgresql/14/main/
@@ -14,7 +14,7 @@ COPY overlay/pg_hba.conf /etc/postgresql/14/main/pg_hba.conf
 RUN sudo chmod 700 /etc/postgresql/14/main/pg_hba.conf
 RUN sudo chown postgres:postgres /etc/postgresql/14/main/pg_hba.conf
 
-RUN sudo service restart postgres.service
+RUN sudo service postgresql restart
 
 # Get package from 
 RUN wget -q -O /tmp/sageteacloud64-3.916.amd64.deb https://repo.sagetea.ai/repo/amd64/sageteacloud64-3.917.amd64.deb \
