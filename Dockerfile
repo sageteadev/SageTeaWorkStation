@@ -3,6 +3,7 @@ FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y apache2 curl git wget bash build-essential postgresql postgresql-contrib systemd apt-transport-https python3-pip python3-venv python3-dev gnupg g++ unzip zip net-tools sudo
+RUN whoami
 
 # Copy Overlay files
 COPY overlay/postgresql.conf /etc/postgresql/14/main/
@@ -11,6 +12,8 @@ COPY overlay/pg_hba.conf /etc/postgresql/14/main/pg_hba.conf
 # Change Persmission on Files
 RUN sudo chmod 700 /etc/postgresql/14/main/pg_hba.conf
 RUN sudo chown postgres:postgres /etc/postgresql/14/main/pg_hba.conf
+
+RUN usermod -a -G postgres whoami
 # Start Services
 RUN pg_ctlcluster 12 main start
 RUN service postgresql restart
