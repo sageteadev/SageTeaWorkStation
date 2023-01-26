@@ -8,6 +8,14 @@ RUN wget -q -O /tmp/sageteacloud64-3.916.amd64.deb https://repo.sagetea.ai/repo/
 && dpkg -i /tmp/sageteacloud64-3.916.amd64.deb \
 && rm /tmp/sageteacloud64-3.916.amd64.deb
 
+# Copy Overlay files
+COPY overlay/postgresql.conf /etc/postgresql/14/main/
+COPY overlay/pg_hba.conf /etc/postgresql/14/main/pg_hba.conf
+
+# Change Persmission on Files
+RUN sudo chmod 700 /etc/postgresql/14/main/pg_hba.conf
+RUN sudo chown postgres:postgres /etc/postgresql/14/main/pg_hba.conf
+
 # Enable Services
 RUN sudo systemctl enable sageteacloudsq@.service
 RUN sudo systemctl enable unit-status-mail@.service

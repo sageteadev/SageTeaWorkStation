@@ -27,12 +27,3 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: sagetea/sageteaworkstation:dev
-      -
-        name: Build arm64
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          file: /home/runner/work/SageTeaWorkStation/SageTeaWorkStation/Dockerfile.arm64
-          platforms: linux/arm64
-          push: true
-          tags: sagetea/sageteaworkstation:dev
