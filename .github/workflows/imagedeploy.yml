@@ -30,6 +30,6 @@ jobs:
         with:
           context: .
           file: /home/runner/work/SageTeaWorkStation/SageTeaWorkStation/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: sagetea/sageteaworkstation:dev
