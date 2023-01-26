@@ -2,12 +2,9 @@ FROM jrei/systemd-ubuntu:22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Print Machinne name
-RUN whoami
-
 # Enable systemd.
 RUN apt-get update ; \
-    apt-get install -y systemd systemd-sysv ; \
+    apt-get install -y systemd systemd-sysv runit-systemd; \
     apt-get clean ; \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ; \
     cd /lib/systemd/system/sysinit.target.wants/ ; \
