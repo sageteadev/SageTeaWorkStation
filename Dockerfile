@@ -17,9 +17,6 @@ RUN sudo chmod 700 /etc/postgresql/14/main/pg_hba.conf
 RUN sudo chown postgres:postgres /etc/postgresql/14/main/pg_hba.conf
 
 RUN usermod -a -G postgres root
-# Start Services
-RUN pg_ctlcluster 12 main start
-RUN service postgresql restart
 
 # Get package from 
 RUN wget -q -O /tmp/sageteacloud64-3.916.amd64.deb https://repo.sagetea.ai/repo/amd64/sageteacloud64-3.917.amd64.deb \
