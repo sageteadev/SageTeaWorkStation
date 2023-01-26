@@ -25,5 +25,5 @@ RUN wget -q -O /tmp/sageteacloud64-3.916.amd64.deb https://repo.sagetea.ai/repo/
 
 EXPOSE 7001 8070 8080 8087 8088
 
-ENTRYPOINT ["bash","/usr/local/bin/SageTeaCloudSQ.sh"]
+#ENTRYPOINT ["bash","/usr/local/bin/SageTeaCloudSQ.sh"]
 #CMD [ "/usr/local/bin/SageTeaCloudSQ.sh" ]
