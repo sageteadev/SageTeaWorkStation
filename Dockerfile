@@ -28,12 +28,8 @@ RUN apt install -y postgresql
 # Copy Overlay files
 COPY overlay/postgresql.conf /etc/postgresql/14/main/
 COPY overlay/pg_hba.conf /etc/postgresql/14/main/pg_hba.conf
-
-# Change Persmission on Files
-RUN sudo chmod 700 /etc/postgresql/14/main/pg_hba.conf
-RUN sudo chown postgres:postgres /etc/postgresql/14/main/pg_hba.conf
-
-RUN usermod -a -G postgres root
+RUN chmod +r /etc/postgresql/14/main/pg_hba.conf
+RUN service postgresql start
 
 # Get package from 
 RUN wget -q -O /tmp/sageteacloud64-3.916.amd64.deb https://repo.sagetea.ai/repo/amd64/sageteacloud64-3.917.amd64.deb \
