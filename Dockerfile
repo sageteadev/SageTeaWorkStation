@@ -2,8 +2,8 @@ FROM ubuntu:20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+# Whoami print machinne name
 RUN apt-get update && apt-get install -y apache2 curl git wget bash build-essential postgresql postgresql-contrib systemd apt-transport-https python3-pip python3-venv python3-dev gnupg g++ unzip zip net-tools sudo
-RUN whoami
 
 # Copy Overlay files
 COPY overlay/postgresql.conf /etc/postgresql/14/main/
