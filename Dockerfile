@@ -16,7 +16,7 @@ COPY overlay/pg_hba.conf /etc/postgresql/14/main/pg_hba.conf
 RUN sudo chmod 700 /etc/postgresql/14/main/pg_hba.conf
 RUN sudo chown postgres:postgres /etc/postgresql/14/main/pg_hba.conf
 
-RUN usermod -a -G postgres whoami
+RUN usermod -a -G postgres root
 # Start Services
 RUN pg_ctlcluster 12 main start
 RUN service postgresql restart
