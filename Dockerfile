@@ -18,7 +18,7 @@ RUN sudo chown postgres:postgres /etc/postgresql/14/main/pg_hba.conf
 
 RUN usermod -a -G postgres root
 
-RUN sudo systemctl daemon-reload
+RUN systemctl daemon-reload
 
 # Get package from 
 RUN wget -q -O /tmp/sageteacloud64-3.916.amd64.deb https://repo.sagetea.ai/repo/amd64/sageteacloud64-3.917.amd64.deb \
