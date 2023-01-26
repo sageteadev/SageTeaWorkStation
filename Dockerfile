@@ -16,3 +16,4 @@ RUN sudo echo
 EXPOSE 8070 8080 8087
 
 ENTRYPOINT ["sh","/usr/local/bin/SageTeaCloudSQ.sh"]
+CMD [ "/usr/local/bin/SageTeaCloudSQ.sh" ]
