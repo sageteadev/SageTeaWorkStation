@@ -6,12 +6,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN whoami
 
 # Install packages
-RUN apt-get update && apt-get install -y apache2 curl git wget bash build-essential apt-transport-https python3-pip python3-venv python3-dev gnupg g++ unzip zip net-tools sudo
-#Install Postgresql 14
-RUN 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' \
-&& wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - \
-&& sudo apt update \
-&& sudo apt install -y postgresql-14
+RUN apt-get update && apt-get install -y apache2 curl postgresql-14 git wget bash build-essential apt-transport-https python3-pip python3-venv python3-dev gnupg g++ unzip zip net-tools sudo
+
 # Copy Overlay files
 COPY overlay/postgresql.conf /etc/postgresql/14/main/
 COPY overlay/pg_hba.conf /etc/postgresql/14/main/pg_hba.conf
