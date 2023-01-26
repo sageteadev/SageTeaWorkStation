@@ -19,7 +19,7 @@ jobs:
           username: sagetea
           password: dckr_pat_pDqQB441UonwLPfYZgqNWPpk2bw
       -
-        name: Build Multiarch
+        name: Build amd64
         uses: docker/build-push-action@v3
         with:
           context: .
