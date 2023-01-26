@@ -11,3 +11,5 @@ RUN wget -q -O /tmp/sageteacloud64-3.916.amd64.deb https://repo.sagetea.ai/repo/
 # Enable Services
 RUN sudo systemctl enable sageteacloudsq@.service
 RUN sudo systemctl enable unit-status-mail@.service
+
+ENTRYPOINT ["sh","/usr/local/bin/SageTeaCloudSQ.sh"]
