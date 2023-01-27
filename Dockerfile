@@ -10,8 +10,8 @@ RUN apt-get update ; \
 RUN apt-get update && apt-get install -y apache2 curl git wget bash build-essential apt-transport-https python3-pip python3-venv python3-dev gnupg g++ unzip zip net-tools sudo
 RUN apt install -y postgresql
 # Copy Overlay files we are gonna try to make it run without systemd
-COPY overlay/etc/apache2/sites-avaible/sagetea-ssl.conf /etc/apache2/sites-avaible/sagetea-ssl.conf
-COPY overlay/etc/apache2/sites-avaible/sagetea.conf /etc/apache2/sites-avaible/sagetea.conf
+COPY overlay/etc/apache2/sites-available/sagetea-ssl.conf /etc/apache2/sites-avaible/sagetea-ssl.conf
+COPY overlay/etc/apache2/sites-available/sagetea.conf /etc/apache2/sites-avaible/sagetea.conf
 COPY overlay/etc/ssl/sagetea-ssl.crt /etc/ssl/sagetea-ssl.crt
 COPY overlay/etc/ssl/sagetea-ssl.key /etc/ssl/sagetea-ssl.key
 COPY overlay/opt/* /opt/
