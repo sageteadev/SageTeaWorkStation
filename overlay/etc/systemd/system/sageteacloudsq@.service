@@ -1,0 +1,18 @@
+[Unit]
+Description=SageTea Server 64 Bit Squeak Portal on %i
+OnFailure=unit-status-mail@%n.service
+ConditionPathExists=/home/%i/portal.conf
+After=network-online.target
+After=postgresql.service
+
+[Service]
+User=%i
+WorkingDirectory=/home/%i
+ExecStart=/opt/sageteacloudsq/SqueakVM/squeak -nodisplay -nosound -encoding UTF-8 /opt/sageteacloudsq/SageTeaCloud.image -cwd /home/%i -doit "SageTeaManager startServerLogging; launch "
+Restart=always
+RestartSec=20
+LimitRTPRIO=2
+
+
+[Install]
+WantedBy=multi-user.target

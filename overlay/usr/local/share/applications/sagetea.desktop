@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=SageTea Text To Software
+GenericName=SageTea Text To Software
+Comment=SageTea Text To Software
+Type=Application
+Exec=xdg-open http://localhost:8070
+Icon=security-medium
+StartupNotify=false
+Terminal=false
+Categories=System;Office;
+X-Ubuntu-Gettext-Domain=sagetea
+
