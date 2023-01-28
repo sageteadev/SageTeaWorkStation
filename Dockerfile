@@ -1,4 +1,4 @@
-FROM jrei/systemd-ubuntu:22.04
+FROM ubuntu:22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -16,7 +16,10 @@ COPY overlay/etc/ssl/sagetea-ssl.crt /etc/ssl/sagetea-ssl.crt
 COPY overlay/etc/ssl/sagetea-ssl.key /etc/ssl/sagetea-ssl.key
 COPY overlay/opt/* /opt/
 COPY overlay/usr/local/bin/* /usr/local/bin/
-RUN service postgresql start
+# Add Tim Override to postgresql
+COPY overlay/sagetea.conf /etc/postgresql/14/main/conf.d/sagetea.conf
+RUN service apache2 restart
+RUN service postgresql restart
 RUN mkdir /home/sdefault
 
 EXPOSE 7001 8070 8080 8087 8088
