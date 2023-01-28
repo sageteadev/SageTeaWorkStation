@@ -21,5 +21,5 @@ RUN mkdir /home/sdefault
 
 EXPOSE 7001 8070 8080 8087 8088
 
-#ENTRYPOINT ["bash","/usr/local/bin/SageTeaCloudSQ.sh"]
+ENTRYPOINT ["bash","/usr/local/bin/SageTeaCloudSQ.sh --name=sdefault --webport=8070 --license=OFM42-DA-AC-AD --password=5Vo4Qz_Uhg-BcCh"]
 #CMD [ "/usr/local/bin/SageTeaCloudSQ.sh" ]
