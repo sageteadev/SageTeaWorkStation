@@ -18,6 +18,7 @@ COPY overlay/opt/* /opt/
 COPY overlay/usr/local/bin/* /usr/local/bin/
 # Add Tim Override to postgresql
 COPY overlay/sagetea.conf /etc/postgresql/14/main/conf.d/sagetea.conf
+# Restart Services if wont crash
 RUN service apache2 restart
 RUN service postgresql restart
 RUN mkdir /home/sdefault
