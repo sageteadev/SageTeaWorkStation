@@ -21,9 +21,8 @@ COPY overlay/sagetea.conf /etc/postgresql/14/main/conf.d/sagetea.conf
 # Restart Services if wont crash
 RUN service apache2 restart
 RUN service postgresql restart
-RUN mkdir /home/sdefault
 
-EXPOSE 7001 8070 8080 8087 8088
+EXPOSE 7001 8070 8080 8087 8088 5432
 
 ENTRYPOINT ["bash","/usr/local/bin/SageTeaCloudSQ.sh --name=sdefault --webport=8070 --license=OFM42-DA-AC-AD --password=5Vo4Qz_Uhg-BcCh"]
 #CMD [ "/usr/local/bin/SageTeaCloudSQ.sh" ]
