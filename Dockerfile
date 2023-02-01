@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 #Install systemd
-RUN apt-get update && apt install -y systemd
+RUN apt-get update && apt install -y systemd systemd-sysv dbus dbus-user-session
 # Enable systemd
 RUN find /etc/systemd/system \
     /lib/systemd/system \
