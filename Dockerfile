@@ -1,4 +1,4 @@
-FROM postgres:latest
+FROM postgres:14.3
 
 ARG DEBIAN_FRONTEND=noninteractive
 
