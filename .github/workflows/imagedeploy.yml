@@ -20,20 +20,7 @@ jobs:
           PGDATA: /var/lib/postgresql/data
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
-      - name: systemd
-        image: leandelivery/docker-systemd:22.04
-        privileged: True
-        security_opts:
-        - seccomp=unconfined
-        volumes:
-        - /sys/fs/cgroup:/sys/fs/cgroup:ro
-        tmpfs:
-        - /tmp
-        - /run
-        capabilities:
-        - SYS_ADMIN
-        groups:
-        - debian_family
+    steps:
       -
         name: Checkout
         uses: actions/checkout@v3
@@ -50,6 +37,9 @@ jobs:
           context: .
           volumes: db-data:/var/lib/postgresql/data
           file: /home/runner/work/SageTeaWorkStation/SageTeaWorkStation/Dockerfile
+          env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
           platforms: linux/amd64
           push: true
           tags: sagetea/sageteaworkstation:dev
