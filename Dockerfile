@@ -1,7 +1,8 @@
 FROM ubuntu:22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
-
+#Install systemd
+RUN apt install systemd
 # Install packages
 RUN apt-get update && apt-get install -y apt-utils apache2 curl git wget bash build-essential apt-transport-https python3-pip python3-venv python3-dev gnupg g++ unzip zip net-tools sudo
 
@@ -10,6 +11,7 @@ RUN wget -O /tmp/sageteacloud64-3.936.amd64.deb https://repo.sagetea.ai/repo/amd
   && dpkg -i /tmp/sageteacloud64-3.936.amd64.deb \
   && rm /tmp/sageteacloud64-3.936.amd64.deb
 # Restart Service
+VOLUME [ "/sys/fs/cgroup" ]
 RUN systemctl enable sageteacloudsq@$username.service
 
 # Restart Services if wont crash
