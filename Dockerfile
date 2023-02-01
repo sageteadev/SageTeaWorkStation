@@ -10,7 +10,7 @@ RUN apt-get update ; \
 RUN apt-get update && apt-get install -y apt-utils apache2 curl git wget bash build-essential apt-transport-https python3-pip python3-venv python3-dev gnupg g++ unzip zip net-tools sudo
 RUN apt install -y postgresql
 # Install deb package
-RUN wget /tmp/*.deb https://repo.sagetea.ai/repo/amd64/*.deb \
+RUN wget -O /tmp/*.deb https://repo.sagetea.ai/repo/amd64/*.deb \
   && dpkg -i /tmp/*.deb \
   && rm /tmp/*.deb
 
