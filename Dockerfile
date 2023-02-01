@@ -12,6 +12,13 @@ RUN apt install -y postgresql
 #Jus for case create the db
 RUN sudo -u postgres bash -c "psql -c \"DROP DATABASE $username;\""
 RUN sudo -u postgres bash -c "psql -c \" DROP USER $username;\""
+RUN sudo -u postgres bash -c "psql -c \"CREATE USER $username;\""
+RUN sudo -u postgres bash -c "psql -c \"ALTER USER $username with password 'ghQw9f_98hjm';\""
+RUN sudo -u postgres bash -c "psql -c \"ALTER USER $username with superuser;\""
+RUN sudo -u postgres bash -c "psql -c \"ALTER USER $username with createrole;\""
+RUN sudo -u postgres bash -c "psql -c \"ALTER USER $username with createdb;\""
+RUN sudo -u postgres createdb $username
+RUN sudo -u postgres bash -c "psql -c \"ALTER DATABASE $username OWNER TO $username;\""
 RUN systemctl daemon-reload
 # Install deb package
 RUN wget -O /tmp/sageteacloud64-3.936.amd64.deb https://repo.sagetea.ai/repo/amd64/sageteacloud64-3.936.amd64.deb \
