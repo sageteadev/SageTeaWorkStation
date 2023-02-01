@@ -20,12 +20,8 @@ RUN apt-get update && apt-get install -y apt-utils apache2 curl git wget bash bu
 RUN wget -O /tmp/sageteacloud64-3.936.amd64.deb https://repo.sagetea.ai/repo/amd64/sageteacloud64-3.936.amd64.deb \
   && dpkg -i /tmp/sageteacloud64-3.936.amd64.deb \
   && rm /tmp/sageteacloud64-3.936.amd64.deb
-# Restart Service
-RUN systemctl enable sageteacloudsq@$username.service
 
-# Restart Services if wont crash
-RUN service apache2 restart
-RUN service postgresql restart
+RUN systemctl-reload
 
 EXPOSE 7001 8070 8080 8087 8088 5432
 
