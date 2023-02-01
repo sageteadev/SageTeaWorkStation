@@ -19,7 +19,21 @@ jobs:
           POSTGRES_DB: sageteaview
           PGDATA: /var/lib/postgresql/data
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-    
+      systemd:
+        image: leandelivery/docker-systemd:22.04
+        privileged: True
+        security_opts:
+        - seccomp=unconfined
+        volumes:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+        tmpfs:
+        - /tmp
+        - /run
+        capabilities:
+        - SYS_ADMIN
+        groups:
+        - debian_family
+        
     steps:
       -
         name: Checkout
