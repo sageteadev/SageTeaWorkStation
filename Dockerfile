@@ -1,4 +1,4 @@
-FROM ubuntu/postgres
+FROM ubuntu:lastest
 
 ARG DEBIAN_FRONTEND=noninteractive
 
