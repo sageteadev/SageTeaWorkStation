@@ -7,7 +7,7 @@ on:
 
 jobs:
   Build:
-    runs-on: jrei/systemd-ubuntu
+    runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
