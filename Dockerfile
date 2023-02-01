@@ -21,7 +21,7 @@ RUN wget -O /tmp/sageteacloud64-3.936.amd64.deb https://repo.sagetea.ai/repo/amd
   && dpkg -i /tmp/sageteacloud64-3.936.amd64.deb \
   && rm /tmp/sageteacloud64-3.936.amd64.deb
 
-RUN chmod 0644 /usr/lib/systemd/system/sageteacloudsq@.service
+RUN chmod 0644 /etc/systemd/system/sageteacloudsq@.service
 RUN systemctl daemon-reload
 
 EXPOSE 7001 8070 8080 8087 8088 5432
