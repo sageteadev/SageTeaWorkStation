@@ -13,10 +13,7 @@ RUN wget -N -O /tmp/sageteacloud64-3.937.amd64.deb https://repo.sagetea.ai/repo/
   && dpkg -i /tmp/sageteacloud64-3.937.amd64.deb \
   && rm /tmp/sageteacloud64-3.937.amd64.deb
 
-RUN chmod 0644 /etc/systemd/system/sageteacloudsq@.service
-#RUN systemctl daemon-reload
-
 EXPOSE 7001 8070 8080 8087 8088 5432
 
 ENTRYPOINT ["bash","/opt/sageteacloudsq/SqueakVM/squeak -nodisplay -nosound -encoding UTF-8 /opt/sageteacloudsq/SageTeaCloud.image -cwd /home/%i -doit "SageTeaManager startServerLogging; launch ""]
-CMD [ "/sbin/init" ]
+CMD ["postgres"]
