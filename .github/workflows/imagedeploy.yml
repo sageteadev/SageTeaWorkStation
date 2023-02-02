@@ -19,6 +19,7 @@ jobs:
           POSTGRES_DB: sageteaview
           PGDATA: /var/lib/postgresql/data
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        volumes: db-data:/var/lib/postgresql/data
 
     steps:
       -
@@ -38,8 +39,6 @@ jobs:
           volumes: db-data:/var/lib/postgresql/data
           file: /home/runner/work/SageTeaWorkStation/SageTeaWorkStation/Dockerfile
           env:
-          POSTGRES_HOST: postgres
-          POSTGRES_PORT: 5432
           platforms: linux/amd64
           push: true
           tags: sagetea/sageteaworkstation:dev
