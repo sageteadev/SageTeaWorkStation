@@ -13,13 +13,16 @@ RUN find /etc/systemd/system \
     -not -name '*systemd-user-sessions*' \
     -print0 | xargs -0 rm -vf
 
+# Install postgres
+RUN apt install postgresql-14 postgresql-client-14
+
 # Install packages
 RUN apt-get update && apt-get install -y apt-utils apache2 curl git wget bash build-essential apt-transport-https python3-pip python3-venv python3-dev gnupg g++ unzip zip net-tools sudo
 
 # Install deb package
-RUN wget -O /tmp/sageteacloud64-3.936.amd64.deb https://repo.sagetea.ai/repo/amd64/sageteacloud64-3.936.amd64.deb \
-  && dpkg -i /tmp/sageteacloud64-3.936.amd64.deb \
-  && rm /tmp/sageteacloud64-3.936.amd64.deb
+RUN wget -N -O /tmp/sageteacloud64-3.937.amd64.deb https://repo.sagetea.ai/repo/amd64/sageteacloud64-3.937.amd64.deb \
+  && dpkg -i /tmp/sageteacloud64-3.937.amd64.deb \
+  && rm /tmp/sageteacloud64-3.937.amd64.deb
 
 RUN chmod 0644 /etc/systemd/system/sageteacloudsq@.service
 #RUN systemctl daemon-reload
