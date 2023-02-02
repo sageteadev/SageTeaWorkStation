@@ -36,7 +36,7 @@ jobs:
         with:
           context: .
           volumes: db-data:/var/lib/postgresql/data
-          file: /home/runner/work/SageTeaWorkStation/SageTeaWorkStation/Dockerfile
+          file: /home/runner/work/SageTeaWorkStation/SageTeaWorkStation/docker-compose.yml
           env:
           POSTGRES_HOST: postgres
           POSTGRES_PORT: 5432

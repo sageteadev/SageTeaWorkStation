@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14.1
+    restart: always
+    environment:
+      - POSTGRES_USER=sageteaview
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+  api:
+    container_name: sageteaworkstation
+    build:
+      context: ./
+      target: production
+    image: ubuntu:20.04
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: production
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: sageteaview
+      DB_PASSWORD: postgres
+      DB_NAME: sageteaview
+    links:
+      - db
+    volumes:
+      - './:/src'
+      - '-v /sys/fs/cgroup/:/sys/fs/cgroup:ro'
+volumes:
+  db:
+    driver: local
