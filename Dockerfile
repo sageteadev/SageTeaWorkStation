@@ -14,7 +14,7 @@ RUN find /etc/systemd/system \
     -print0 | xargs -0 rm -vf
 
 # Install postgres
-RUN apt install postgresql-14 postgresql-client-14
+RUN apt install -y postgresql-14 postgresql-client-14
 
 # Install packages
 RUN apt-get update && apt-get install -y apt-utils apache2 curl git wget bash build-essential apt-transport-https python3-pip python3-venv python3-dev gnupg g++ unzip zip net-tools sudo
