@@ -29,5 +29,5 @@ RUN chmod 0644 /etc/systemd/system/sageteacloudsq@.service
 
 EXPOSE 7001 8070 8080 8087 8088 5432
 
-#ENTRYPOINT ["bash","/usr/local/bin/SageTeaCloudSQ.sh --name=sdefault --webport=8070 --license=OFM42-DA-AC-AD --password=5Vo4Qz_Uhg-BcCh"]
-CMD [ "/sbin/init" ]
+ENTRYPOINT ["bash",/opt/sageteacloudsq/SqueakVM/squeak -nodisplay -nosound -encoding UTF-8 /opt/sageteacloudsq/SageTeaCloud.image -cwd /home/%i -doit "SageTeaManager startServerLogging; launch "]
+#CMD [ "/sbin/init" ]
