@@ -13,8 +13,9 @@ COPY overlay/etc/init.d/* /etc/init.d/
 COPY overlay/etc/ssl/* /etc/ssl/
 COPY overlay/opt/*  /opt/
 COPY overlay/usr/local/* /usr/local/
+COPY docker-entrypoint.sh /usr/local/bin/
 
 EXPOSE 7001 8070 8080 8087 8088 5432
 
-#ENTRYPOINT ["sh","/opt/sageteacloudsq/SqueakVM/squeak -nodisplay -nosound -encoding UTF-8 /opt/sageteacloudsq/SageTeaCloud.image -cwd /home/%i -doit "SageTeaManager startServerLogging; launch ""]
-#CMD ["postgres"]
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["postgres"]
